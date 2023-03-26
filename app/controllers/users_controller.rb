@@ -6,7 +6,6 @@ class UsersController < ApplicationController
             user: {
               username: @user.username,
               email: @user.email,
-              password: @user.password
             }
           }
         else
@@ -15,4 +14,9 @@ class UsersController < ApplicationController
           }
         end
     end
+    private
+    def user_params
+      params.require(:user).permit(:password, :username, :email)
+    end
 end
+
